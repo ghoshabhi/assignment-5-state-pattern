@@ -20,7 +20,6 @@ public class MultiplesOf3 {
     public Integer computeY(String _input) {
         Integer inputValue = inputToIntegerMap.get(_input);
         Integer sum = currentSum += inputValue;
-        System.out.println("sum = " + sum);
         this.setCurrentSum(sum);
         Integer mod = currentSum % 3;
 

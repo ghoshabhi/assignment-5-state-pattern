@@ -1,35 +1,33 @@
 package multiplesOf3;
 
-// Is the State interface really needed ?
 public enum MultOf3State implements State {
     ZEROMOD3 {
         @Override
         public void changeState(MultiplesOf3 wrapper) {
-            System.out.println("0mod3::sum: " + wrapper.getCurrentSum());
-            if((wrapper.getCurrentSum() % 3) == 0) {
-                wrapper.setState(MultOf3State.ZEROMOD3);
-                System.out.println("wrapper::state: " + wrapper.getState());
-            }
+            MultOf3State.calculateState(wrapper);
         }
     },
     ONEMOD3 {
         @Override
         public void changeState(MultiplesOf3 wrapper) {
-            System.out.println("1mod3::sum: " + wrapper.getCurrentSum());
-            if((wrapper.getCurrentSum() % 3) == 1) {
-                wrapper.setState(MultOf3State.ONEMOD3);
-                System.out.println("wrapper::state: " + wrapper.getState());
-            }
+            MultOf3State.calculateState(wrapper);
         }
     },
     TWOMOD3 {
         @Override
         public void changeState(MultiplesOf3 wrapper) {
-            System.out.println("2mod3::sum: " + wrapper.getCurrentSum());
-            if((wrapper.getCurrentSum() % 3) == 2) {
-                wrapper.setState(MultOf3State.TWOMOD3);
-                System.out.println("wrapper::state: " + wrapper.getState());
-            }
+            MultOf3State.calculateState(wrapper);
+        }
+    };
+
+    private static void calculateState(MultiplesOf3 wrapper) {
+        Integer mod = wrapper.getCurrentSum() % 3;
+        if(mod == 0) {
+            wrapper.setState(MultOf3State.ZEROMOD3);
+        } else if (mod == 1) {
+            wrapper.setState(MultOf3State.ONEMOD3);
+        } else if (mod == 2) {
+            wrapper.setState(MultOf3State.TWOMOD3);
         }
     }
 }
