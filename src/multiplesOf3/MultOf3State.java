@@ -16,18 +16,20 @@ public enum MultOf3State implements State {
         @Override
         public void changeState(MultiplesOf3 wrapper) {
             System.out.println("1mod3::sum: " + wrapper.getCurrentSum());
-//            if((wrapper.getCurrentSum() % 3) == 1) {
-//                wrapper.setState(MultOf3State.ONEMOD3);
-//            }
+            if((wrapper.getCurrentSum() % 3) == 1) {
+                wrapper.setState(MultOf3State.ONEMOD3);
+                System.out.println("wrapper::state: " + wrapper.getState());
+            }
         }
     },
     TWOMOD3 {
         @Override
         public void changeState(MultiplesOf3 wrapper) {
             System.out.println("2mod3::sum: " + wrapper.getCurrentSum());
-//            if((wrapper.getCurrentSum() % 3) == 2) {
-//                wrapper.setState(MultOf3State.TWOMOD3);
-//            }
+            if((wrapper.getCurrentSum() % 3) == 2) {
+                wrapper.setState(MultOf3State.TWOMOD3);
+                System.out.println("wrapper::state: " + wrapper.getState());
+            }
         }
     }
 }
