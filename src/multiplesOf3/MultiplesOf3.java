@@ -9,7 +9,7 @@ public class MultiplesOf3 {
     private Map<String, Integer> inputToIntegerMap = new HashMap<>();
 
     public MultiplesOf3() {
-        state = null;
+//        state = MultOf3State.ZEROMOD3;
         currentSum = 0;
         inputToIntegerMap.put("00", 0);
         inputToIntegerMap.put("01", 1);
@@ -22,16 +22,15 @@ public class MultiplesOf3 {
         Integer sum = currentSum += inputValue;
         System.out.println("sum = " + sum);
         this.setCurrentSum(sum);
-//        System.out.println("inputValue = " + inputValue);
         Integer mod = currentSum % 3;
-        if(mod == 0) {
-            setState(MultOf3State.ZEROMOD3);
-        } else if (mod == 1) {
-            setState(MultOf3State.ONEMOD3);
-        } else if (mod == 2) {
-            setState(MultOf3State.TWOMOD3);
-        }
-//        state.changeState(this);
+//        if(mod == 0) {
+//            setState(MultOf3State.ZEROMOD3);
+//        } else if (mod == 1) {
+//            setState(MultOf3State.ONEMOD3);
+//        } else if (mod == 2) {
+//            setState(MultOf3State.TWOMOD3);
+//        }
+        state.changeState(this);
         return mod == 0 ? 1 : 0;
     }
 
