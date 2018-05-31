@@ -20,18 +20,20 @@ public class MultiplesOf3 {
     public Integer computeY(String _input) {
         Integer inputValue = inputToIntegerMap.get(_input);
         Integer sum = currentSum += inputValue;
-        System.out.println("sum = " + sum);
         this.setCurrentSum(sum);
-//        System.out.println("inputValue = " + inputValue);
         Integer mod = currentSum % 3;
-        if(mod == 0) {
-            setState(MultOf3State.ZEROMOD3);
-        } else if (mod == 1) {
-            setState(MultOf3State.ONEMOD3);
-        } else if (mod == 2) {
-            setState(MultOf3State.TWOMOD3);
+
+        if (state == null) {
+            if(mod == 0) {
+                setState(MultOf3State.ZEROMOD3);
+            } else if (mod == 1) {
+                setState(MultOf3State.ONEMOD3);
+            } else if (mod == 2) {
+                setState(MultOf3State.TWOMOD3);
+            }
+        } else {
+            state.changeState(this);
         }
-//        state.changeState(this);
         return mod == 0 ? 1 : 0;
     }
 
