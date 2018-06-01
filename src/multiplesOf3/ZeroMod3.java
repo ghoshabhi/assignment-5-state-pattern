@@ -10,6 +10,7 @@ public class ZeroMod3 implements State {
         if(intInput != null) {
             Integer currentSum = wrapper.getCurrentSum();
             currentSum += intInput;
+            wrapper.setCurrentSum(currentSum);
             Integer mod = currentSum % 3;
             if (mod == 0) {
                 // do nothing, we are in correct state

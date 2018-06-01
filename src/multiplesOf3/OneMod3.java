@@ -10,6 +10,7 @@ public class OneMod3 implements State {
         if(intInput != null) {
             Integer currentSum = wrapper.getCurrentSum();
             currentSum += intInput;
+            wrapper.setCurrentSum(currentSum);
             Integer mod = currentSum % 3;
             if (mod == 0) {
                 wrapper.setState(new ZeroMod3());
