@@ -1,5 +1,5 @@
 package multiplesOf3;
 
 public interface State {
-    void changeState(MultiplesOf3 wrapper);
+    Integer changeState(String input, MultiplesOf3 wrapper);
 }

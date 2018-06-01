@@ -4,37 +4,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MultiplesOf3 {
-    private MultOf3State state;
+    private State state;
     private Integer currentSum;
-    private Map<String, Integer> inputToIntegerMap = new HashMap<>();
+    private Map<String, Integer> stringIntegerHashMap = new HashMap<>();
 
     public MultiplesOf3() {
-        state = null;
+        state = new ZeroMod3();
         currentSum = 0;
-        inputToIntegerMap.put("00", 0);
-        inputToIntegerMap.put("01", 1);
-        inputToIntegerMap.put("10", 2);
-        inputToIntegerMap.put("11", 3);
+        stringIntegerHashMap.put("00", 0);
+        stringIntegerHashMap.put("01", 1);
+        stringIntegerHashMap.put("10", 2);
+        stringIntegerHashMap.put("11", 3);
     }
 
-    public Integer computeY(String _input) {
-        Integer inputValue = inputToIntegerMap.get(_input);
-        Integer sum = currentSum += inputValue;
-        this.setCurrentSum(sum);
-        Integer mod = currentSum % 3;
+    public Integer computeY(String input) {
+        return state.changeState(input, this);
+    }
 
-        if (state == null) {
-            if(mod == 0) {
-                setState(MultOf3State.ZEROMOD3);
-            } else if (mod == 1) {
-                setState(MultOf3State.ONEMOD3);
-            } else if (mod == 2) {
-                setState(MultOf3State.TWOMOD3);
-            }
-        } else {
-            state.changeState(this);
-        }
-        return mod == 0 ? 1 : 0;
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     public Integer getCurrentSum() {
@@ -45,11 +37,7 @@ public class MultiplesOf3 {
         this.currentSum = currentSum;
     }
 
-    public void setState(MultOf3State newState) {
-        state = newState;
-    }
-
-    public MultOf3State getState() {
-        return state;
+    public Map<String, Integer> getStringIntegerHashMap() {
+        return stringIntegerHashMap;
     }
 }

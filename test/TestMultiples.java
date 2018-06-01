@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 
-import multiplesOf3.MultOf3State;
 import multiplesOf3.MultiplesOf3;
+import multiplesOf3.OneMod3;
+import multiplesOf3.TwoMod3;
+import multiplesOf3.ZeroMod3;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -25,23 +27,23 @@ public class TestMultiples {
     // which produces a Y of 1
     @Test
     public void test1Zero() {
-        assertEquals((long)1, (long)multOf3.computeY("00"));
-        assertEquals(MultOf3State.ZEROMOD3, multOf3.getState());
+        assertEquals((Integer) 1, multOf3.computeY("00"));
+        assertEquals(ZeroMod3.class, multOf3.getState().getClass());
     }
 
     // Input = 01
     @Test
     public void test1One() {
-        assertEquals((long)0, (long)multOf3.computeY("01"));
-        assertEquals(MultOf3State.ONEMOD3, multOf3.getState());
+        assertEquals((Integer)0, multOf3.computeY("01"));
+        assertEquals(OneMod3.class, multOf3.getState().getClass());
     }
-
-
-    // Input = 10
+//
+//
+//    // Input = 10
     @Test
     public void test1Two() {
-        assertEquals((long)0, (long)multOf3.computeY("10"));
-        assertEquals(MultOf3State.TWOMOD3, multOf3.getState());
+        assertEquals((Integer)0, multOf3.computeY("10"));
+        assertEquals(TwoMod3.class, multOf3.getState().getClass());
     }
 
     // Run computeY on each String in the array of inputs and
@@ -54,30 +56,30 @@ public class TestMultiples {
         return result;
     }
 
-    // Try two 10's in a row, so sum = 4 = 1 mod 3
+//    // Try two 10's in a row, so sum = 4 = 1 mod 3
     @Test
     public void test2Twos() {
         multOf3.computeY("10");
-        assertEquals((long)0, (long)multOf3.computeY("10"));
-        assertEquals(MultOf3State.ONEMOD3, multOf3.getState());
+        assertEquals((Integer)0, multOf3.computeY("10"));
+        assertEquals(OneMod3.class, multOf3.getState().getClass());
     }
 
-    // Try 1 then 3 then 1 then 3
+//    // Try 1 then 3 then 1 then 3
     @Test
     public void test1313() {
         String []inputs = {"01", "11", "01", "11"};
         int result = runSeries(inputs);
         assertEquals(0, result);
-        assertEquals(MultOf3State.TWOMOD3, multOf3.getState());
+        assertEquals(TwoMod3.class, multOf3.getState().getClass());
     }
-
-    // Trying remaining state transitions:
-    // ONE -> ZERO, TWO->TWO, TWO->ZERO
+//
+//    // Trying remaining state transitions:
+//    // ONE -> ZERO, TWO->TWO, TWO->ZERO
     @Test
     public void test12231() {
         String []inputs = {"01", "10", "10", "11", "01"};
         int result = runSeries(inputs);
         assertEquals(1, result);
-        assertEquals(MultOf3State.ZEROMOD3, multOf3.getState());
+        assertEquals(ZeroMod3.class, multOf3.getState().getClass());
     }
 }
