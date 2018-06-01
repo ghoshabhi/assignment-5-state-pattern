@@ -6,7 +6,10 @@
 
 import multiplesOf3.MultOf3State;
 import multiplesOf3.MultiplesOf3;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -25,14 +28,14 @@ public class TestMultiples {
     // which produces a Y of 1
     @Test
     public void test1Zero() {
-        assertEquals((long)1, (long)multOf3.computeY("00"));
+        assertEquals(1, (int)multOf3.computeY("00"));
         assertEquals(MultOf3State.ZEROMOD3, multOf3.getState());
     }
 
     // Input = 01
     @Test
     public void test1One() {
-        assertEquals((long)0, (long)multOf3.computeY("01"));
+        assertEquals(0, (int)multOf3.computeY("01"));
         assertEquals(MultOf3State.ONEMOD3, multOf3.getState());
     }
 
@@ -40,7 +43,7 @@ public class TestMultiples {
     // Input = 10
     @Test
     public void test1Two() {
-        assertEquals((long)0, (long)multOf3.computeY("10"));
+        assertEquals(0, (int)multOf3.computeY("10"));
         assertEquals(MultOf3State.TWOMOD3, multOf3.getState());
     }
 
@@ -58,7 +61,7 @@ public class TestMultiples {
     @Test
     public void test2Twos() {
         multOf3.computeY("10");
-        assertEquals((long)0, (long)multOf3.computeY("10"));
+        assertEquals(0, (int)multOf3.computeY("10"));
         assertEquals(MultOf3State.ONEMOD3, multOf3.getState());
     }
 
