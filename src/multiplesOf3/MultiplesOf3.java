@@ -18,7 +18,7 @@ public class MultiplesOf3 {
     }
 
     public Integer computeY(String input) {
-        return state.changeState(input, this);
+        return state.computeY(input, this);
     }
 
     public State getState() {

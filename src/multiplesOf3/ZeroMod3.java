@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class ZeroMod3 implements State {
     @Override
-    public Integer changeState(String input, MultiplesOf3 wrapper) {
+    public Integer computeY(String input, MultiplesOf3 wrapper) {
         Map<String, Integer> map = wrapper.getStringIntegerHashMap();
         Integer intInput = map.get(input);
         if(intInput != null) {
