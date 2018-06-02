@@ -37,9 +37,8 @@ public class TestMultiples {
         assertEquals((Integer)0, multOf3.computeY("01"));
         assertEquals(OneMod3.class, multOf3.getState().getClass());
     }
-//
-//
-//    // Input = 10
+
+    // Input = 10
     @Test
     public void test1Two() {
         assertEquals((Integer)0, multOf3.computeY("10"));
